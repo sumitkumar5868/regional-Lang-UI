@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+:root {
+  --bg-deep: #050814;
+  --bg-surface: #0a0f1f;
+  --glow-cyan: 34 211 238;
+  --glow-blue: 59 130 246;
+  --glow-violet: 139 92 246;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg-deep);
+  color: #e6edf7;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* ---------- Animated background grid ---------- */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(56, 189, 248, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(56, 189, 248, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 40%, transparent 100%);
+}
+
+.aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(120px);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+  background: rgba(13, 19, 38, 0.55);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(56, 189, 248, 0.14);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.glass-hover {
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass-hover:hover {
+  border-color: rgba(56, 189, 248, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 50px rgba(34, 211, 238, 0.12);
+}
+
+/* ---------- Glow text ---------- */
+.text-glow {
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.45);
+}
+
+/* ---------- Scanning line ---------- */
+@keyframes scanline {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.scanline {
+  animation: scanline 2.6s ease-in-out infinite;
+}
+
+/* ---------- HUD corner brackets ---------- */
+.hud-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: rgba(34, 211, 238, 0.7);
+}
+
+/* ---------- Pulse ring ---------- */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  50% { transform: scale(1.05); opacity: 0.3; }
+  100% { transform: scale(0.95); opacity: 0.7; }
+}
+.pulse-ring { animation: pulse-ring 2.2s ease-in-out infinite; }
+
+/* ---------- Floating emoji ---------- */
+@keyframes float-emoji {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(3deg); }
+}
+.float-emoji { animation: float-emoji 4s ease-in-out infinite; }
+
+/* ---------- Fade up entrance ---------- */
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fade-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ---------- Shimmer skeleton ---------- */
+@keyframes shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, rgba(56,189,248,0.04) 0px, rgba(56,189,248,0.12) 200px, rgba(56,189,248,0.04) 400px);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+/* ---------- Live dot ---------- */
+@keyframes live-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.live-dot { animation: live-blink 1.3s ease-in-out infinite; }
+
+/* ---------- Audio bars ---------- */
+@keyframes audio-bar {
+  0%, 100% { transform: scaleY(0.3); }
+  50% { transform: scaleY(1); }
+}
+.audio-bar {
+  transform-origin: bottom;
+  animation: audio-bar 0.9s ease-in-out infinite;
+}
+
+/* ---------- Spin slow ---------- */
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 8s linear infinite; }
+
+/* ---------- Custom scrollbar ---------- */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(56, 189, 248, 0.25); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(56, 189, 248, 0.45); }
+
+/* ---------- Range slider ---------- */
+input[type="range"].neon-range {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(56, 189, 248, 0.2);
+  outline: none;
+}
+input[type="range"].neon-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #22d3ee;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.8);
+  cursor: pointer;
+}

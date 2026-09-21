@@ -1,0 +1,10 @@
+{
+  "name": "RegionalAI — Regional Language Multimodal AI",
+  "description": "Real-time gesture recognition and regional-language communication powered by multimodal AI.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
